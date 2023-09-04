@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import './App.css';
+import Header from './Components/Header';
+import Nav from './Components/Nav';
+import ArticleList from './Components/ArticleList';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-
-      </div>
-      <h1>Vite + React</h1>
+      <Header />
+      <main className="main-body">
+        <Nav />
+        <ArticleList />
+      </main>
     </>
   );
 }
