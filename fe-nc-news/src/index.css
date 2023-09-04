@@ -68,7 +68,8 @@ button:focus-visible {
 .header {
   background-color: #b71212;
   color: #ebdfdf;
-  padding: 20px;
+  padding: 1px;
+  text-align: center;
 }
 
 .navbar {
@@ -104,13 +105,14 @@ button:focus-visible {
   border: solid black;
 
 
+
 }
 
 .article_card_image {
   max-width: 80%
 }
 
-.dropdown {}
+/* .dropdown {} */
 
 ul {
   list-style: none;
