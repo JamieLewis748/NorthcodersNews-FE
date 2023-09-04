@@ -8,8 +8,10 @@ function App() {
   return (
     <>
       <Header />
-      <Nav />
-      <ArticleList />
+      <main className="main-body">
+        <Nav />
+        <ArticleList />
+      </main>
     </>
   );
 }
