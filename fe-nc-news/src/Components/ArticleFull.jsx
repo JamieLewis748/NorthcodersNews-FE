@@ -35,8 +35,6 @@ const ArticleFull = () => {
                 <p>Comments {article.comment_count}</p>
             </div>
             <CommentList />
-
-
         </div>
     );
 };
