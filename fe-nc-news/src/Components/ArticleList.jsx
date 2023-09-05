@@ -15,7 +15,7 @@ const ArticleList = () => {
     }, []);
 
     return (
-        <section className="article_list">
+        <ul className="article_list">
             {loading ? (<p>Loading...</p>) : (
                 <>
                     {articles.articles.map((article) => (
@@ -23,7 +23,7 @@ const ArticleList = () => {
                     ))}
                 </>
             )}
-        </section>
+        </ul>
     );
 };
 

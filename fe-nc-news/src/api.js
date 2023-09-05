@@ -12,8 +12,15 @@ export const fetchAllArticles = () => {
 export const fetchArticleById = (articleId) => {
     return axios
         .get(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}`)
-        .then((data) => {
-            console.log("🚀 ~ data:", data);
+        .then(({ data }) => {
             return data;
+        });
+};
+
+export const fetchCommentsByArticleId = (articleId) => {
+    return axios
+        .get(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}/comments`)
+        .then(({ data }) => {
+            return data.comments;
         });
 };
