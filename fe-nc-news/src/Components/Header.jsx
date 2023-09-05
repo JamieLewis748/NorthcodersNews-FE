@@ -15,7 +15,7 @@ const Header = () => {
             <div className="toggle-user-container">
                 <ToggleUser />
             </div>
-            {user && <p>Welcome {user.name}</p>}
+            {user && <p>Welcome back {user.name}</p>}
         </header>
     );
 

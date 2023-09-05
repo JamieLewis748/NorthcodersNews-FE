@@ -19,10 +19,12 @@ const ToggleUser = () => {
         setUser(selectedUser);
     };
 
+
+
     return (
         <div className="user-dropdown">
-            <select id="userSelect" value={user} onChange={toggleUser} >
-                <option key={"notSignedIn"}>No User Selected</option>
+            <select id="userSelect" value={user ? user.username : ''} onChange={toggleUser} >
+                <option key={"notSignedIn"}>Not Signed In</option>
                 {users.map((user) => (
                     <option key={user.username} value={user.username}>
                         {user.name}
@@ -32,6 +34,7 @@ const ToggleUser = () => {
             {user && <img src={user.avatar_url} alt={user.username} className="user-avatar" />}
         </div>
     );
+
 };
 
 export default ToggleUser;
