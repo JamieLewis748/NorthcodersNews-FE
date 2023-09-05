@@ -58,7 +58,17 @@ h1 {
   background-color: #166088;
   color: #DBE9EE;
   padding: 1px;
+  display: grid;
+  grid-template-columns: auto 10%;
   text-align: center;
+}
+
+.toggle-user-container {
+  height: 80px
+}
+
+.user-avatar {
+  max-height: 100%;
 }
 
 .navbar {

@@ -24,3 +24,11 @@ export const fetchCommentsByArticleId = (articleId) => {
             return data.comments;
         });
 };
+
+export const fetchUsers = () => {
+    return axios
+        .get(`https://nc-news-app-wdjy.onrender.com/api/users`)
+        .then(({ data }) => {
+            return data.users;
+        });
+};

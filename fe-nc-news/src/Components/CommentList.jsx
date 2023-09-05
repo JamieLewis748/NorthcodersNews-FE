@@ -18,7 +18,7 @@ const CommentList = () => {
                 setComments(comments);
                 setLoading(false);
             });
-    });
+    }, [id]);
     return (
         <ul className="comment_list">
             {loading ? (<p>Loading...</p>) : (
