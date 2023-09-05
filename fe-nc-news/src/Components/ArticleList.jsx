@@ -19,9 +19,7 @@ const ArticleList = () => {
             {loading ? (<p>Loading...</p>) : (
                 <>
                     {articles.articles.map((article) => (
-                        <div key={article.article_id}>
-                            <ArticleCard article={article} />
-                        </div>
+                        <ArticleCard key={article.article_id} article={article} />
                     ))}
                 </>
             )}

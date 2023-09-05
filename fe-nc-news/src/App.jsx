@@ -1,7 +1,10 @@
-import { useState } from 'react';
+
 import Header from './Components/Header';
 import Nav from './Components/Nav';
 import ArticleList from './Components/ArticleList';
+import ArticleFull from './Components/ArticleFull';
+import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
 
@@ -10,7 +13,12 @@ function App() {
       <Header />
       <main className="main-body">
         <Nav />
-        <ArticleList />
+        <Routes>
+          <Route path="/" element={<ArticleList />} />
+          <Route path="/article/:id" element={<ArticleFull />} />
+
+        </Routes>
+
       </main>
     </>
   );

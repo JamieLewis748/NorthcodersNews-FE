@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
+
 const Header = () => {
     return (
         <header className="header">
-            <h1>Northcoders News</h1>
+            <Link to="/">
+                <h1>Northcoders News</h1>
+            </Link>
         </header>
     );
 
