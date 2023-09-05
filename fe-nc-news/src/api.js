@@ -7,3 +7,13 @@ export const fetchAllArticles = () => {
             return data;
         });
 };
+
+
+export const fetchArticleById = (articleId) => {
+    return axios
+        .get(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}`)
+        .then((data) => {
+            console.log("🚀 ~ data:", data);
+            return data;
+        });
+};

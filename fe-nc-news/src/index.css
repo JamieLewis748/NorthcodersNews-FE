@@ -134,3 +134,42 @@ ul {
   padding: 0, 50, 0, 0;
   min-width: 100%
 }
+
+.like-comment-article_full {
+  background-color: #6468ae;
+  justify-content: space-evenly;
+  display: flex;
+  margin: 0;
+  padding: 0, 50, 0, 0;
+  min-width: 100%
+}
+
+.full-article {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.article_full {
+  flex: 2;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.image-container {
+  float: left;
+  width: 500px;
+  margin-right: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.article_body {
+  font-size: larger
+}
