@@ -1,19 +1,19 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
-    const navigate = useNavigate();
 
-    const handleCardClick = () => {
-        navigate(`/article/${article.article_id}`);
-    };
     return (
         <li className="article_card">
-            <article onClick={handleCardClick}>
+            <article>
                 <header className="like-comment">
                     <p>Created by {article.author}</p>
                 </header>
-                <h3 className="article_title">{article.title}</h3>
-                <img className='article_card_image' src={article.article_img_url} alt={article.title} />
+                <Link to={`/article/${article.article_id}`}>
+                    <div className="linkBox">
+                        <h3 className="article_title">{article.title}</h3>
+                        <img className='article_card_image' src={article.article_img_url} alt={article.title} />
+                    </div>
+                </Link>
             </article >
             <footer className="like-comment">
                 <button>Like</button>

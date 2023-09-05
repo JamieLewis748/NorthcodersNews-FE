@@ -14,7 +14,7 @@ const ArticleFull = () => {
 
     useEffect(() => {
         fetchArticleById(id)
-            .then(({ data }) => {
+            .then((data) => {
                 setArticle(data.article);
                 setLoading(false);
             });
@@ -23,7 +23,7 @@ const ArticleFull = () => {
     return (
         <div className="full-article">
             <section className="article_full">
-                <h1>{article.title}</h1>
+                <h1 id="article-full-h1">{article.title}</h1>
                 <p>Created by {article.author} at {article.created_at}</p>
                 <div className="image-container">
                     <img className="article_full_image" src={article.article_img_url} alt={article.title} />
