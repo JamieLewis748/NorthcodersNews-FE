@@ -7,7 +7,7 @@ const ArticleCard = ({ article }) => {
         navigate(`/article/${article.article_id}`);
     };
     return (
-        <div className="article_card">
+        <li className="article_card">
             <article onClick={handleCardClick}>
                 <header className="like-comment">
                     <p>Created by {article.author}</p>
@@ -20,7 +20,7 @@ const ArticleCard = ({ article }) => {
                 <button>Dislike</button>
                 <button>Comment</button>
             </footer>
-        </div>
+        </li>
     );
 };
 
