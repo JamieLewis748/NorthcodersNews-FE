@@ -7,7 +7,7 @@ const ArticleCard = ({ article }) => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleUpvote = () => {
-        setCurrentVotes(currentVotes + 1);
+        setCurrentVotes(curr => curr + 1);
         setErrorMessage(null);
         patchArticleByArticleId(article.article_id, 1)
             .catch(() => {
@@ -16,7 +16,7 @@ const ArticleCard = ({ article }) => {
     };
 
     const handleDownvote = () => {
-        setCurrentVotes(currentVotes - 1);
+        setCurrentVotes(curr => curr - 1);
         setErrorMessage(null);
         patchArticleByArticleId(article.article_id, -1)
             .catch(() => {
@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
                 <p>Votes: {currentVotes}</p>
                 <button id="dislike-button" onClick={handleDownvote}>Dislike</button>
 
-                <button id="comment-button">Comment</button>
+                <Link to={`/article/${article.article_id}`}><button id="comment-button">Comment</button></Link>
             </footer>
             {errorMessage && <div className="error"> {errorMessage} </div>}
         </li>
