@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const fetchAllArticles = () => {
+export const fetchAllArticles = (topic) => {
     return axios
-        .get("https://nc-news-app-wdjy.onrender.com/api/articles")
+        .get("https://nc-news-app-wdjy.onrender.com/api/articles", { params: { topic } })
         .then(({ data }) => {
             return data;
         });
@@ -47,5 +47,14 @@ export const postNewComment = (articleId, comment) => {
         .post(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}/comments`, { author: comment.author, body: comment.body })
         .then(({ data }) => {
             return data.newComment;
+        });
+};
+
+
+export const getTopics = () => {
+    return axios
+        .get("https://nc-news-app-wdjy.onrender.com/api/topics")
+        .then(({ data }) => {
+            return data;
         });
 };
