@@ -170,7 +170,7 @@ ul {
 .like-comment,
 .like-comment-article_full {
   background-color: #C0D6DF;
-  justify-content: space-between;
+  justify-content: space-evenly;
   display: flex;
   flex-direction: row;
   margin: 0;
