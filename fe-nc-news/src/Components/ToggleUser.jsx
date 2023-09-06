@@ -23,8 +23,8 @@ const ToggleUser = () => {
 
     return (
         <div className="user-dropdown">
-            <select id="userSelect" value={user ? user.username : ''} onChange={toggleUser} >
-                <option key={"notSignedIn"}>Not Signed In</option>
+            <select id="userSelect" value={user ? user.username : undefined} onChange={toggleUser} >
+                <option key={""}>Not Signed In</option>
                 {users.map((user) => (
                     <option key={user.username} value={user.username}>
                         {user.name}

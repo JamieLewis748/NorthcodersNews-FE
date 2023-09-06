@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Nav = () => {
@@ -27,7 +28,7 @@ const Nav = () => {
             ) : null}
 
             <button className="nav-button">Create Article</button>
-            <button className="nav-button">Profile</button>
+            <Link className="nav-link" to="/profile">Profile</Link>
 
         </nav>
     );

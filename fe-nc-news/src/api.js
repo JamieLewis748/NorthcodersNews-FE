@@ -32,3 +32,11 @@ export const fetchUsers = () => {
             return data.users;
         });
 };
+
+export const patchArticleByArticleId = (articleId, numberOfVotes) => {
+    return axios
+        .patch(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}`, { inc_votes: numberOfVotes })
+        .then(({ data }) => {
+            return data.votes;
+        });
+};
