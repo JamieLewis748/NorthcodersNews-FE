@@ -1,6 +1,29 @@
 import { Link } from "react-router-dom";
+import { fetchAllArticles, patchArticleByArticleId } from "../api";
+import { useState } from "react";
 
 const ArticleCard = ({ article }) => {
+    const [currentVotes, setCurrentVotes] = useState(article.votes);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleUpvote = () => {
+        setCurrentVotes(currentVotes + 1);
+        setErrorMessage(null);
+        patchArticleByArticleId(article.article_id, 1)
+            .catch(() => {
+                setErrorMessage("There was a problem submitting your vote, please try again");
+            });
+    };
+
+    const handleDownvote = () => {
+        setCurrentVotes(currentVotes - 1);
+        setErrorMessage(null);
+        patchArticleByArticleId(article.article_id, -1)
+            .catch(() => {
+                setErrorMessage("There was a problem submitting your vote, please try again");
+            });
+    };
+
 
     return (
         <li className="article_card">
@@ -16,10 +39,14 @@ const ArticleCard = ({ article }) => {
                 </Link>
             </article >
             <footer className="like-comment">
-                <button>Like</button>
-                <button>Dislike</button>
-                <button>Comment</button>
+
+                <button id="like-button" onClick={handleUpvote}>Like</button>
+                <p>Votes: {currentVotes}</p>
+                <button id="dislike-button" onClick={handleDownvote}>Dislike</button>
+
+                <button id="comment-button">Comment</button>
             </footer>
+            {errorMessage && <div className="error"> {errorMessage} </div>}
         </li>
     );
 };

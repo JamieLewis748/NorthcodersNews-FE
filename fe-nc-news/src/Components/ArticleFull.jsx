@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchArticleById } from '../api';
 import CommentList from './CommentList.jsx';
+import { patchArticleByArticleId } from '../api';
 
 
 
@@ -11,16 +12,39 @@ const ArticleFull = () => {
 
     const [article, setArticle] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [currentVotes, setCurrentVotes] = useState(article.votes);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         fetchArticleById(id)
             .then((data) => {
                 setArticle(data.article);
+                setCurrentVotes(data.article.votes);
                 setLoading(false);
             });
     }, [id]);
 
+    const handleUpvote = () => {
+        setCurrentVotes(currentVotes + 1);
+        setErrorMessage(null);
+        patchArticleByArticleId(article.article_id, 1)
+            .catch(() => {
+                setErrorMessage("There was a problem submitting your vote, please try again");
+            });
+
+    };
+
+    const handleDownvote = () => {
+        setCurrentVotes(currentVotes - 1);
+        setErrorMessage(null);
+        patchArticleByArticleId(article.article_id, -1)
+            .catch(() => {
+                setErrorMessage("There was a problem submitting your vote, please try again");
+            });
+    };
+
     return (
+
         <div className="full-article">
             <section className="article_full">
                 <h1 id="article-full-h1">{article.title}</h1>
@@ -31,13 +55,16 @@ const ArticleFull = () => {
                 <p className="article_body">{article.body}</p>
             </section>
             <div className="like-comment-article_full">
-                <p>Votes {article.votes}</p>
+                <p>Votes {currentVotes}</p>
+                <button onClick={handleUpvote}>Like</button>
+                <button onClick={handleDownvote}>Dislike</button>
                 <p>Comments {article.comment_count}</p>
             </div>
+            {errorMessage && <div className="error"> {errorMessage} </div>}
+
             <CommentList />
-
-
         </div>
+
     );
 };
 

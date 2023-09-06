@@ -4,6 +4,7 @@ import Nav from './Components/Nav';
 import ArticleList from './Components/ArticleList';
 import ArticleFull from './Components/ArticleFull';
 import { Routes, Route } from 'react-router-dom';
+import Profile from './Components/Profile';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticleList />} />
           <Route path="/article/:id" element={<ArticleFull />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
 
       </main>
