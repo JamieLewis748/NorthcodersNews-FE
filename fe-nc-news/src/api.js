@@ -40,3 +40,11 @@ export const patchArticleByArticleId = (articleId, numberOfVotes) => {
             return data.votes;
         });
 };
+
+export const postNewComment = (username, comment) => {
+    return axios
+        .post(`https://nc-news-app-wdjy.onrender.com/api/articles/:article_id/comments`, { author: username, body: body })
+        .then(({ data }) => {
+            return data.comment;
+        });
+};

@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
                 <p>Votes: {currentVotes}</p>
                 <button id="dislike-button" onClick={handleDownvote}>Dislike</button>
 
-                <button id="comment-button">Comment</button>
+                <Link to={`/article/${article.article_id}`}><button id="comment-button">Comment</button></Link>
             </footer>
             {errorMessage && <div className="error"> {errorMessage} </div>}
         </li>
