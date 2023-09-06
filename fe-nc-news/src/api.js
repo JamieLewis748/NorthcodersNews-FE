@@ -41,10 +41,11 @@ export const patchArticleByArticleId = (articleId, numberOfVotes) => {
         });
 };
 
-export const postNewComment = (username, comment) => {
+export const postNewComment = (articleId, comment) => {
+
     return axios
-        .post(`https://nc-news-app-wdjy.onrender.com/api/articles/:article_id/comments`, { author: username, body: body })
+        .post(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}/comments`, { author: comment.author, body: comment.body })
         .then(({ data }) => {
-            return data.comment;
+            return data.newComment;
         });
 };

@@ -25,7 +25,7 @@ const ArticleFull = () => {
     }, [id]);
 
     const handleUpvote = () => {
-        setCurrentVotes(currentVotes + 1);
+        setCurrentVotes(curr => curr + 1);
         setErrorMessage(null);
         patchArticleByArticleId(article.article_id, 1)
             .catch(() => {
@@ -35,7 +35,7 @@ const ArticleFull = () => {
     };
 
     const handleDownvote = () => {
-        setCurrentVotes(currentVotes - 1);
+        setCurrentVotes(curr => curr - 1);
         setErrorMessage(null);
         patchArticleByArticleId(article.article_id, -1)
             .catch(() => {
