@@ -13,10 +13,16 @@ const CommentAdder = ({ articleId, updateComments }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-
         if (!user) {
             setErrorMessage('You must be logged in as a user to post comments');
             setIsSubmitting(false);
+            return;
+        } else {
+            setErrorMessage("");
+        }
+
+        if (newComment.trim("").length === 0) {
+            setIsCommentValid(false);
             return;
         }
 
@@ -36,6 +42,7 @@ const CommentAdder = ({ articleId, updateComments }) => {
             setIsSubmitting(false);
         });
     };
+
     return (
         <div className="comment-adder-container">
             <form className="comment-adder" onSubmit={handleSubmit}>
@@ -45,7 +52,6 @@ const CommentAdder = ({ articleId, updateComments }) => {
                     value={newComment}
                     onChange={(e) => {
                         setNewComment(e.target.value);
-                        setIsCommentValid(true);
                     }}
                 ></textarea>
                 <button disabled={isSubmitting}>
