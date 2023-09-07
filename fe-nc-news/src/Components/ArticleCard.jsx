@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { fetchAllArticles, patchArticleByArticleId } from "../api";
+import { patchArticleByArticleId } from "../api";
 import { useState } from "react";
 
 const ArticleCard = ({ article }) => {
@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
                 <p>Votes: {currentVotes}</p>
                 <button id="dislike-button" onClick={handleDownvote}>Dislike</button>
 
-                <Link to={`/article/${article.article_id}`}><button id="comment-button">Comment</button></Link>
+                <Link to={`/article/${article.article_id}`}><button id="comment-button">Comments: {article.comment_count}</button></Link>
             </footer>
             {errorMessage && <div className="error"> {errorMessage} </div>}
         </li>
