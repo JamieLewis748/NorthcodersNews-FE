@@ -42,13 +42,14 @@ const ArticleFull = () => {
                 setErrorMessage("There was a problem submitting your vote, please try again");
             });
     };
+    const createdAt = new Date(article.created_at).toLocaleString();
 
     return (
 
         <div className="full-article">
             <section className="article_full">
                 <h1 id="article-full-h1">{article.title}</h1>
-                <p>Created by {article.author} at {article.created_at}</p>
+                <p>Created by {article.author} on {createdAt}</p>
                 <div className="image-container">
                     <img className="article_full_image" src={article.article_img_url} alt={article.title} />
                 </div>

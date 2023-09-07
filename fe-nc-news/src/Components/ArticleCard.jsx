@@ -24,12 +24,13 @@ const ArticleCard = ({ article }) => {
             });
     };
 
+    const createdAt = new Date(article.created_at).toLocaleString();
 
     return (
         <li className="article_card">
             <article>
                 <header className="like-comment">
-                    <p>Created by {article.author}</p>
+                    <p>Created by {article.author} on {createdAt}</p>
                 </header>
                 <Link to={`/article/${article.article_id}`}>
                     <div className="linkBox">
