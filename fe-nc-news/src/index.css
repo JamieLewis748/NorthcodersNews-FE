@@ -229,6 +229,11 @@ footer {
   justify-content: space-between;
 }
 
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .comment-like {
   display: flex;
 }

@@ -59,3 +59,11 @@ export const getTopics = () => {
             return data;
         });
 };
+
+export const deleteComment = (commentId) => {
+    return axios
+        .delete(`https://nc-news-app-wdjy.onrender.com/api/comments/${commentId}`, { comment_id: commentId })
+        .then(({ data }) => {
+            return data;
+        });
+};

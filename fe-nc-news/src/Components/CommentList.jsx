@@ -3,6 +3,7 @@ import CommentCard from "./CommentCard";
 import { useParams } from "react-router-dom";
 import { fetchCommentsByArticleId } from "../api";
 import CommentAdder from "./CommentAdder";
+import { deleteComment } from "../api";
 
 
 
@@ -10,6 +11,7 @@ const CommentList = () => {
     const { id } = useParams();
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isDeleting, setIsDeleting] = useState(false);
 
 
 
@@ -27,6 +29,21 @@ const CommentList = () => {
         });
     };
 
+    const removeComment = (id) => {
+        setIsDeleting(true);
+        deleteComment(id)
+            .then(() => {
+                setComments((currentComments) =>
+                    currentComments.filter((comment) => comment.comment_id !== id)
+                );
+                setIsDeleting(false);
+                alert("Comment successfully removed");
+            }).catch((error) => {
+                setIsDeleting(false);
+                console.error("Error deleting comment:", error);
+            });
+    };
+
     return (
         <section>
             <CommentAdder articleId={id} updateComments={updateComments} />
@@ -34,7 +51,7 @@ const CommentList = () => {
                 {loading ? (<p>Loading...</p>) : (
                     <>
                         {comments.map((comment) => (
-                            <CommentCard key={comment.comment_id} comment={comment} />
+                            <CommentCard key={comment.comment_id} comment={comment} onDelete={removeComment} isDeleting={isDeleting} />
                         ))}
                     </>
                 )}

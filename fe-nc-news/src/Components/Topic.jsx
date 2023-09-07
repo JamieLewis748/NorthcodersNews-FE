@@ -4,7 +4,6 @@ import ArticleList from "./ArticleList";
 
 const Topic = () => {
     const { topic } = useParams();
-    console.log("🚀 ~ topic:", topic);
 
 
     return (
