@@ -127,7 +127,9 @@ h1 {
   max-width: 8em
 }
 
-
+.header-sort-order {
+  display: flex;
+}
 
 .article_list {
   background-color: #DBE9EE;

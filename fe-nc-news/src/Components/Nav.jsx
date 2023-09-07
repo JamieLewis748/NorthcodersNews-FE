@@ -32,12 +32,13 @@ const Nav = () => {
                 <div className="nav-button">Topics</div>
                 <ul className="topics">
                     {topics.map((topic) => (
-                        <li className="nav-link" id="topic" key={topic.slug}>
-                            <Link to={`/topic/${topic.slug}`}>{topic.slug}</Link>
-                        </li>
+                        <Link to={`/topic/${topic.slug}`} key={topic.slug} className="nav-link">
+                            <li id="topic">
+                                {topic.slug}
+                            </li>
+                        </Link>
                     ))}
                 </ul>
-
             </div>
             <button className="nav-button">Create Article</button>
             <Link className="nav-link" to="/profile">
