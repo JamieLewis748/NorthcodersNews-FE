@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const fetchAllArticles = (topic) => {
+export const fetchAllArticles = (topic, sort) => {
     return axios
-        .get("https://nc-news-app-wdjy.onrender.com/api/articles", { params: { topic } })
+        .get("https://nc-news-app-wdjy.onrender.com/api/articles", { params: { topic, sort_by: sort } })
         .then(({ data }) => {
             return data;
         });

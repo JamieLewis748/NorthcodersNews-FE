@@ -37,7 +37,6 @@ const Nav = () => {
                         </li>
                     ))}
                 </ul>
-
             </div>
             <button className="nav-button">Create Article</button>
             <Link className="nav-link" to="/profile">
