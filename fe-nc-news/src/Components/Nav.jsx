@@ -6,6 +6,7 @@ import { getTopics } from "../api";
 const Nav = () => {
     const [topics, setTopics] = useState([]);
     const [open, setOpen] = useState(false);
+    const [hoverTimeout, setHoverTimeout] = useState(null);
 
 
     useEffect(() => {
@@ -14,28 +15,35 @@ const Nav = () => {
         });
     }, []);
 
-    console.log("🚀 ~ topics:", topics);
-
     const handleOpen = () => {
-        setOpen(!open);
+        clearTimeout(hoverTimeout);
+        setOpen(true);
     };
 
+    const handleClose = () => {
+        const timeoutId = setTimeout(() => {
+            setOpen(false);
+        }, 300);
+        setHoverTimeout(timeoutId);
+    };
     return (
         <nav className="navbar">
-            <button className="nav-button" onClick={handleOpen}>Topics</button>
-            {open ? (
+            <div className="nav-container" onMouseEnter={handleOpen} onMouseLeave={handleClose}>
+                <div className="nav-button">Topics</div>
                 <ul className="topics">
                     {topics.map((topic) => (
-                        <li className="topic" key={topic.slug}>
+                        <li className="nav-link" id="topic" key={topic.slug}>
                             <Link to={`/topic/${topic.slug}`}>{topic.slug}</Link>
                         </li>
                     ))}
                 </ul>
-            ) : null}
 
+            </div>
             <button className="nav-button">Create Article</button>
-            <Link className="nav-link" to="/profile">Profile</Link>
-        </nav>
+            <Link className="nav-link" to="/profile">
+                Profile
+            </Link>
+        </nav >
     );
 };
 
