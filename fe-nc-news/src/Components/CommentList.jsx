@@ -33,11 +33,12 @@ const CommentList = () => {
         setIsDeleting(true);
         deleteComment(id)
             .then(() => {
+                console.log("in then block after delet");
+                alert("Comment successfully removed");
                 setComments((currentComments) =>
                     currentComments.filter((comment) => comment.comment_id !== id)
                 );
                 setIsDeleting(false);
-                alert("Comment successfully removed");
             }).catch((error) => {
                 setIsDeleting(false);
                 console.error("Error deleting comment:", error);
