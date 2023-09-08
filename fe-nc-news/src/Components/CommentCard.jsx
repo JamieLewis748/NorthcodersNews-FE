@@ -42,9 +42,9 @@ const CommentCard = ({ comment, onDelete }) => {
                 </button>)}
             </div>
             <footer className="comment-like-container">
-                <button id="vote-button" onClick={() => { handleVote(1); }} disabled={hasVoted}>👍</button>
+                <button className="vote-button" onClick={() => { handleVote(1); }} disabled={hasVoted}>👍</button>
                 <p>Votes {currentVotes}</p>
-                <button id="vote-button" onClick={() => { handleVote(-1); }} disabled={hasVoted}>👎</button>
+                <button className="vote-button" onClick={() => { handleVote(-1); }} disabled={hasVoted}>👎</button>
             </footer>
             {errorMessage && <div className="error"> {errorMessage} </div>}
         </li>

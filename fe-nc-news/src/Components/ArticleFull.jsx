@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { fetchArticleById } from '../api';
 import CommentList from './CommentList.jsx';
 import { patchArticleByArticleId } from '../api';
+import Error404 from './Error404';
 
 
 
@@ -14,6 +15,7 @@ const ArticleFull = () => {
     const [currentVotes, setCurrentVotes] = useState(article.votes);
     const [errorMessage, setErrorMessage] = useState("");
     const [hasVoted, setHasVoted] = useState(false);
+    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
         fetchArticleById(id)
@@ -21,6 +23,10 @@ const ArticleFull = () => {
                 setArticle(data.article);
                 setCurrentVotes(data.article.votes);
                 setLoading(false);
+            }).catch((error) => {
+                if (error.response.status === 404) {
+                    setNotFound(true);
+                }
             });
     }, [id]);
 
@@ -40,7 +46,6 @@ const ArticleFull = () => {
         setCurrentVotes(curr => curr - 1);
         setErrorMessage(null);
         setHasVoted(true);
-
         patchArticleByArticleId(article.article_id, -1)
             .catch(() => {
                 setHasVoted(false);
@@ -49,8 +54,11 @@ const ArticleFull = () => {
     };
     const createdAt = new Date(article.created_at).toLocaleString();
 
-    return (
+    if (notFound === true) {
+        return <Error404 />;
+    }
 
+    return (
         <div className="full-article">
             <section className="article_full">
                 <h1 id="article-full-h1">{article.title}</h1>
@@ -61,9 +69,11 @@ const ArticleFull = () => {
                 <p className="article_body">{article.body}</p>
             </section>
             <div className="like-comment-article_full">
-                <button id="vote-button" onClick={handleUpvote} disabled={hasVoted}>👍</button>
-                <p>Votes {currentVotes}</p>
-                <button id="vote-button" onClick={handleDownvote} disabled={hasVoted}>👎</button>
+                <div className="vote-button-container">
+                    <button id="vote-button" onClick={handleUpvote} disabled={hasVoted}>👍</button>
+                    <p>Votes {currentVotes}    </p>
+                    <button id="vote-button" onClick={handleDownvote} disabled={hasVoted}>👎</button>
+                </div>
                 <p>Comments {article.comment_count}</p>
             </div>
             {errorMessage && <div className="error"> {errorMessage} </div>}
