@@ -48,10 +48,11 @@ const ArticleCard = ({ article }) => {
                 </Link>
             </article >
             <footer className="like-comment">
-
-                <p>Votes: {currentVotes}</p>
-                <button id="vote-button" onClick={handleUpvote} disabled={hasVoted}>👍</button>
-                <button id="vote-button" onClick={handleDownvote} disabled={hasVoted}>👎</button>
+                <div className="vote-button-container">
+                    <button className="vote-button" onClick={handleUpvote} disabled={hasVoted}>👍</button>
+                    <p>Votes: {currentVotes}</p>
+                    <button className="vote-button" onClick={handleDownvote} disabled={hasVoted}>👎</button>
+                </div>
                 <Link to={`/article/${article.article_id}`}><button id="comment-button">Comments: {article.comment_count}</button></Link>
             </footer>
             {errorMessage && <div className="error"> {errorMessage} </div>}

@@ -35,7 +35,7 @@ a:hover {
 }
 
 .navbar {
-  background-color: #DBE9EE;
+  background-color: #dbe9ee;
   color: #4F6D7A;
   padding: 10px;
   justify-content: space-evenly;
@@ -189,7 +189,7 @@ ul {
 .like-comment,
 .like-comment-article_full {
   background-color: #C0D6DF;
-  /* justify-content: space-between; */
+  justify-content: space-around;
   display: flex;
   flex-direction: row;
   margin: 0;
@@ -197,13 +197,20 @@ ul {
   color: 4F6D7A;
 }
 
-#vote-button {
+.like-comment-article_full {
+  padding-right: 2em
+}
+
+.vote-button {
   min-width: 0%;
 }
 
-#comment-button {
+.vote-button-container {
+  display: flex;
+}
 
-  position: right;
+.comment-button {
+  align-self: right;
 }
 
 .full-article {
@@ -346,11 +353,36 @@ footer {
   margin-bottom: 8px;
 }
 
-.comment-adder button {
-  align-self: flex-end;
+
+.comment-adder-footer {
+  display: flex;
+}
+
+#newComment {
+  font-size: 16px;
+  height: 3em
 }
 
 .error {
   color: red;
   margin-top: 8px;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #dbe9ee;
+  min-height: 100%;
+  color: #166088;
+}
+
+.error-text-h3 {
+  color: #166088;
+  max-width: 80%;
+  margin-left: 15%
+}
+
+.error-image {
+  min-width: 50%;
+  max-width: 100%
 }

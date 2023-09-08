@@ -23,6 +23,7 @@ const CommentAdder = ({ articleId, updateComments }) => {
 
         if (newComment.trim("").length === 0) {
             setIsCommentValid(false);
+            setErrorMessage("Please enter a comment first");
             return;
         }
 
@@ -40,6 +41,7 @@ const CommentAdder = ({ articleId, updateComments }) => {
             setErrorMessage("");
         }).catch((error) => {
             setIsSubmitting(false);
+            setErrorMessage("");
         });
     };
 
@@ -54,11 +56,13 @@ const CommentAdder = ({ articleId, updateComments }) => {
                         setNewComment(e.target.value);
                     }}
                 ></textarea>
-                <button disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Add Comment'}
-                </button>
+                <div className="comment-adder-footer">
+                    <button disabled={isSubmitting}>
+                        {isSubmitting ? 'Submitting...' : 'Add Comment'}
+                    </button>
+                    {errorMessage && <div className="error"> {errorMessage} </div>}
+                </div>
             </form>
-            {errorMessage && <div className="error"> {errorMessage} </div>}
         </div>
     );
 };
