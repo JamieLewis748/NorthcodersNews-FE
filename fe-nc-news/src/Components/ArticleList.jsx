@@ -7,7 +7,7 @@ const ArticleList = ({ topic }) => {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [sortCriteria, setSortCriteria] = useState('created_at');
-    const [sortOrder, setSortOrder] = useState("asc");
+    const [sortOrder, setSortOrder] = useState("desc");
 
 
     useEffect(() => {
@@ -31,8 +31,8 @@ const ArticleList = ({ topic }) => {
         <ul className="article_list">
             <header className="header-sort-order">
                 <SortSelect onSortChange={handleSortChange} />
-                <button onClick={handleOrderChange}>
-                    Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}
+                <button className="order-button" onClick={handleOrderChange}>
+                    Sort {sortOrder === 'asc' ? '⬆️' : '⬇️'}
                 </button>
             </header>
             {loading ? (<p>Loading...</p>) : (

@@ -11,7 +11,6 @@ const CommentList = () => {
     const { id } = useParams();
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isDeleting, setIsDeleting] = useState(false);
 
 
 
@@ -30,17 +29,16 @@ const CommentList = () => {
     };
 
     const removeComment = (id) => {
-        setIsDeleting(true);
         deleteComment(id)
             .then(() => {
-                console.log("in then block after delet");
+                console.log("in then block after delete");
                 alert("Comment successfully removed");
                 setComments((currentComments) =>
                     currentComments.filter((comment) => comment.comment_id !== id)
                 );
-                setIsDeleting(false);
+
             }).catch((error) => {
-                setIsDeleting(false);
+
                 console.error("Error deleting comment:", error);
             });
     };
@@ -52,7 +50,7 @@ const CommentList = () => {
                 {loading ? (<p>Loading...</p>) : (
                     <>
                         {comments.map((comment) => (
-                            <CommentCard key={comment.comment_id} comment={comment} onDelete={removeComment} isDeleting={isDeleting} />
+                            <CommentCard key={comment.comment_id} comment={comment} onDelete={removeComment} />
                         ))}
                     </>
                 )}

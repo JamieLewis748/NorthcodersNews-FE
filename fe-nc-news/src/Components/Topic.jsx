@@ -8,7 +8,7 @@ const Topic = () => {
 
     return (
         <div className="topic">
-            <h2>{topic}</h2>
+            <h2 className="topic-header">{topic}</h2>
             <ArticleList topic={topic} />
         </div>
     );

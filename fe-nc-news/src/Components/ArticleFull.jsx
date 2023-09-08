@@ -9,11 +9,11 @@ import { patchArticleByArticleId } from '../api';
 
 const ArticleFull = () => {
     const { id } = useParams();
-
     const [article, setArticle] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentVotes, setCurrentVotes] = useState(article.votes);
     const [errorMessage, setErrorMessage] = useState("");
+    const [hasVoted, setHasVoted] = useState(false);
 
     useEffect(() => {
         fetchArticleById(id)
@@ -27,8 +27,10 @@ const ArticleFull = () => {
     const handleUpvote = () => {
         setCurrentVotes(curr => curr + 1);
         setErrorMessage(null);
+        setHasVoted(true);
         patchArticleByArticleId(article.article_id, 1)
             .catch(() => {
+                setHasVoted(false);
                 setErrorMessage("There was a problem submitting your vote, please try again");
             });
 
@@ -37,8 +39,11 @@ const ArticleFull = () => {
     const handleDownvote = () => {
         setCurrentVotes(curr => curr - 1);
         setErrorMessage(null);
+        setHasVoted(true);
+
         patchArticleByArticleId(article.article_id, -1)
             .catch(() => {
+                setHasVoted(false);
                 setErrorMessage("There was a problem submitting your vote, please try again");
             });
     };
@@ -56,9 +61,9 @@ const ArticleFull = () => {
                 <p className="article_body">{article.body}</p>
             </section>
             <div className="like-comment-article_full">
+                <button id="vote-button" onClick={handleUpvote} disabled={hasVoted}>👍</button>
                 <p>Votes {currentVotes}</p>
-                <button onClick={handleUpvote}>Like</button>
-                <button onClick={handleDownvote}>Dislike</button>
+                <button id="vote-button" onClick={handleDownvote} disabled={hasVoted}>👎</button>
                 <p>Comments {article.comment_count}</p>
             </div>
             {errorMessage && <div className="error"> {errorMessage} </div>}

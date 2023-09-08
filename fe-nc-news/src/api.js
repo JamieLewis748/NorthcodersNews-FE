@@ -41,9 +41,16 @@ export const patchArticleByArticleId = (articleId, numberOfVotes) => {
             return data.votes;
         });
 };
+export const patchCommentByCommentId = (commentId, numberOfVotes) => {
+    return axios
+        .patch(`https://nc-news-app-wdjy.onrender.com/api/comments/${commentId}`, { inc_votes: numberOfVotes })
+        .then(({ data }) => {
+            console.log("🚀 ~ data.votes:", data.votes);
+            return data.votes;
+        });
+};
 
 export const postNewComment = (articleId, comment) => {
-
     return axios
         .post(`https://nc-news-app-wdjy.onrender.com/api/articles/${articleId}/comments`, { author: comment.author, body: comment.body })
         .then(({ data }) => {
