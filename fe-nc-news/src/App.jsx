@@ -6,6 +6,7 @@ import ArticleFull from './Components/ArticleFull';
 import { Routes, Route } from 'react-router-dom';
 import Profile from './Components/Profile';
 import Topic from './Components/Topic';
+import Error404 from './Components/Error404';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/article/:id" element={<ArticleFull />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/topic/:topic" element={<Topic />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
 
       </main>

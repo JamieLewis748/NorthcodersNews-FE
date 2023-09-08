@@ -16,10 +16,10 @@ const ArticleList = ({ topic }) => {
     useEffect(() => {
         fetchAllArticles(topic, sortCriteria, sortOrder)
             .then((data) => {
+                setNotFound(false);
                 setArticles(data);
                 setLoading(false);
             }).catch((error) => {
-                console.log("🚀 ~ error:", error);
                 if (error.response.status === 404) {
                     setNotFound(true);
                 }
